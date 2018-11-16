@@ -21,6 +21,7 @@ diamond :: Char -> Maybe [String]
 diamond end
   | end `elem` ['A'..'Z'] = Just diamond 
   | otherwise             = Nothing
-  where letters   = ['A'..end] 
-        corner    = map (spacedChar $ ord end) letters
-        diamond   = reflect' $ map reflect corner
+  where letters     = ['A'..end] 
+        rightCorner = map (spacedChar $ ord end) letters
+        top         = map reflect rightCorner
+        diamond     = reflect' top
