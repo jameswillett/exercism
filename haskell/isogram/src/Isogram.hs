@@ -7,7 +7,7 @@ normalize :: String -> String
 normalize = map toLower . filter isLetter
 
 isIsogram :: String -> Bool
-isIsogram = not . any ((>1) . length) . group . sort . normalize
+isIsogram = all ((==1) . length) . group . sort . normalize
 
 isIsogram' :: String -> Bool
 isIsogram' w = lw == lw'
