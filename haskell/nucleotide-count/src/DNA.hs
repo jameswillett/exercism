@@ -14,14 +14,11 @@ toNucleotide x =
     'T' -> Just T
     _ -> Nothing
 
-incrementAt :: Nucleotide -> Map Nucleotide Int -> Map Nucleotide Int
-incrementAt n = M.adjust succ n
-
 countNucleotides :: String -> Map Nucleotide Int -> Maybe (Map Nucleotide Int)
 countNucleotides [] map = Just map
 countNucleotides (x:xs) map =
   case toNucleotide x of
-    Just n  -> countNucleotides xs $ incrementAt n map
+    Just n  -> countNucleotides xs $ M.adjust succ n map
     Nothing -> Nothing
 
 nucleotideCounts :: String -> Either String (Map Nucleotide Int)
