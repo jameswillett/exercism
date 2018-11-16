@@ -1,12 +1,11 @@
 module Clock (addDelta, fromHourMin, toString) where
 
+import Text.Printf (printf)
+
 data Clock = Clock Int deriving (Eq)
 
 minutesInDay :: Int
 minutesInDay = 60 * 24
-
-validDayMinutes :: Int -> Bool
-validDayMinutes mins = 0 <= mins && mins < minutesInDay
 
 runMinutes :: Int -> Int
 runMinutes mins 
@@ -21,15 +20,10 @@ fromHourMin :: Int -> Int -> Clock
 fromHourMin hour min = Clock $ dayMinutes hour min
 
 toString :: Clock -> String
-toString clock = hourLead ++ hour ++ ":" ++ minuteLead ++ minute
-  where Clock v     = clock
-        h           = v `quot` 60
-        m           = v `mod` 60
-        hour        = show h
-        minute      = show m
-        lead x      = if x < 10 then "0" else ""
-        hourLead    = lead h
-        minuteLead  = lead m
+toString clock = printf "%02d:%02d" hour minute
+  where Clock v = clock
+        hour    = v `quot` 60
+        minute  = v `mod` 60
 
 addDelta :: Int -> Int -> Clock -> Clock
 addDelta hour min clock = Clock $ dayMinutes hour (min + v)
