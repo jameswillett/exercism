@@ -1,6 +1,4 @@
-const validate = n => n.toString(10)
-  .split('')
-  .map((v, i, { length: power }) => Number(v) ** power)
-  .reduce((a, c) => a + c) === n;
+const validate = n => [...n.toString(10)]
+  .reduce((a, c, i, r) => a + (c ** r.length), 0) === n;
 
 module.exports = { validate };
