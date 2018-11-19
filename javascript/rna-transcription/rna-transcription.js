@@ -1,5 +1,5 @@
-const translate = (protien) => {
-  switch (protien) {
+const translate = (nucleotide) => {
+  switch (nucleotide) {
     case 'G': return 'C';
     case 'C': return 'G';
     case 'T': return 'A';
