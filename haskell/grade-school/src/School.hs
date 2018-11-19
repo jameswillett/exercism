@@ -7,7 +7,7 @@ import qualified Data.Map as M
 type School = Map Int [String]
 
 add :: Int -> String -> School -> School
-add gradeNum student school = M.insertWith ((L.sort .) . (++)) gradeNum [student] school
+add gradeNum student = M.insertWith ((L.sort .) . (++)) gradeNum [student]
 
 empty :: School
 empty = M.empty
