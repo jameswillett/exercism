@@ -1,16 +1,15 @@
-const translations = {
-  G: 'C',
-  C: 'G',
-  T: 'A',
-  A: 'U',
+const translate = (protien) => {
+  switch (protien) {
+    case 'G': return 'C';
+    case 'C': return 'G';
+    case 'T': return 'A';
+    case 'A': return 'U';
+    default: throw new Error('Invalid input DNA.');
+  }
 };
 
-const toRna = (sequence) => {
-  const h = sequence[0];
-  const t = sequence.slice(1);
-  if (!h) return '';
-  if (!translations[h]) throw new Error('Invalid input DNA.');
-  return translations[h] + toRna(t);
-};
+const toRna = sequence => sequence
+  .split('')
+  .reduce((a, c) => a + translate(c), '');
 
 module.exports = { toRna };
