@@ -1,0 +1,34 @@
+-- This file has been generated from package.yaml by hpack version 0.28.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 78ddf58be58161d7336517b4a7e69938b5737c62f6d4aafcbd70910c93cd74dc
+
+name:           queen-attack
+version:        2.2.0.6
+build-type:     Simple
+cabal-version:  >= 1.10
+
+library
+  exposed-modules:
+      Queens
+  other-modules:
+      Paths_queen_attack
+  hs-source-dirs:
+      src
+  build-depends:
+      base
+  default-language: Haskell2010
+
+test-suite test
+  type: exitcode-stdio-1.0
+  main-is: Tests.hs
+  other-modules:
+      Paths_queen_attack
+  hs-source-dirs:
+      test
+  build-depends:
+      base
+    , hspec
+    , queen-attack
+  default-language: Haskell2010
