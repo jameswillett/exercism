@@ -6,4 +6,5 @@ factorOf x y
   | otherwise = x `mod` y == 0
 
 sumOfMultiples :: [Integer] -> Integer -> Integer
-sumOfMultiples factors limit = sum $ filter (\x -> any (factorOf x) factors) [1..(pred limit)]
+sumOfMultiples factors limit = sum $ filter onlyFactors [1..(pred limit)]
+  where onlyFactors x = any (factorOf x) factors
