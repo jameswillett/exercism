@@ -11,10 +11,11 @@ def verify(isbn):
     normalized = [ c for c in isbn.lower() if c.isalnum() ]
     l = len(normalized)
 
+    if l != 10:
+        return False
+
     try:
         numbers = [ translate(normalized[n], n == l - 1) for n in range(0, l) ]
-        if len(numbers) != 10:
-            return False
     
     except ValueError:
         return False
