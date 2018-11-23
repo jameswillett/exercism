@@ -18,7 +18,7 @@ const encode = R.pipe(
 );
 
 const decode = R.pipe(
-  R.groupWith(isNumber), // eslint-disable-line
+  R.groupWith(isNumber),
   R.reduce(expandFromCounts, ''),
 );
 
