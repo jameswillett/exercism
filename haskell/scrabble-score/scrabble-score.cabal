@@ -1,0 +1,35 @@
+-- This file has been generated from package.yaml by hpack version 0.28.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 70087b8a5bdffe115afe6c40e8572a8dd855c3710734d80ae7b8746ab38e3402
+
+name:           scrabble-score
+version:        1.1.0.5
+build-type:     Simple
+cabal-version:  >= 1.10
+
+library
+  exposed-modules:
+      Scrabble
+  other-modules:
+      Paths_scrabble_score
+  hs-source-dirs:
+      src
+  ghc-options: -Wall
+  build-depends:
+      base
+  default-language: Haskell2010
+
+test-suite test
+  type: exitcode-stdio-1.0
+  main-is: Tests.hs
+  other-modules:
+      Paths_scrabble_score
+  hs-source-dirs:
+      test
+  build-depends:
+      base
+    , hspec
+    , scrabble-score
+  default-language: Haskell2010
