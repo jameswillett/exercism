@@ -9,9 +9,7 @@ def collatz_steps(number):
         raise ValueError(":(")
     last_step = number
     i = 0
-    for x in range(0, number):
-        if last_step == 1:
-            break
+    while last_step > 1:
         last_step = do_math(last_step)
         i += 1
     return i
