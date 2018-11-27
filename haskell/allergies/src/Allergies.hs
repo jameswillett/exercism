@@ -10,13 +10,10 @@ data Allergen = Eggs
               | Chocolate
               | Pollen
               | Cats
-              deriving (Eq, Show)
-
-allergensWithScores :: [(Allergen, Int)]
-allergensWithScores = zip [Eggs, Peanuts, Shellfish, Strawberries, Tomatoes, Chocolate, Pollen, Cats] $ map (2^) [0..]
+              deriving (Eq, Show, Enum)
 
 allergies :: Int -> [Allergen]
-allergies score = map (\(allergen, _) -> allergen) $ filter (\(_, val) -> (/=0)$ (.&.) val score) allergensWithScores
+allergies score = filter (flip isAllergicTo $ score) [Eggs .. Cats]
 
 isAllergicTo :: Allergen -> Int -> Bool
-isAllergicTo allergen score = elem allergen $ allergies score
+isAllergicTo allergen score = testBit score $ fromEnum allergen
