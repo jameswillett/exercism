@@ -64,4 +64,10 @@ describe('Scrabble', () => {
   test('word with blank letter multiplers and word multipliers and its a bingo', () => {
     expect(score('pi_zapie', { 0: 2, 2: 3 }, [2, 3], true)).toEqual(464);
   });
+
+  test('this should throw', () => {
+    expect(() => score('l33t')).toThrow(
+      new Error('3 is not a valid scrabble tile'),
+    );
+  });
 });
