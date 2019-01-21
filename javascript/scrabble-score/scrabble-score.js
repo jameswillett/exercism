@@ -8,7 +8,12 @@ const score = (word, letterMods = {}, wordMods = [], isBingo = false) => {
   // takes a string and a value, and returns an object where each character is a key
   // and all keys have the same value
   const s = (letters, value) =>
-    [...letters].reduce((a, c) => R.assoc(c, value, a), {});
+    R.compose(
+      R.fromPairs,
+      R.map(
+        l => R.pair(l, value),
+      ),
+    )(letters);
 
   const scores = R.mergeAll([
     s('aeioulnrst', 1),
